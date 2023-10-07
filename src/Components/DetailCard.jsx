@@ -3,6 +3,7 @@ import ScheduleFormModal from "./ScheduleFormModal";
 import styles from "./DetailCard.module.css";
 
 import { DarkModeContext } from "../context/dark-mode";
+
 import { API } from './../Api/api';
 
 
