@@ -1,8 +1,9 @@
 import { useEffect, useState, useContext } from "react";
 import ScheduleFormModal from "./ScheduleFormModal";
 import styles from "./DetailCard.module.css";
-import api from "../services/api";
+
 import { DarkModeContext } from "../context/dark-mode";
+import { API } from './../Api/api';
 
 
 
@@ -14,7 +15,7 @@ const DetailCard = (props) => {
 
   async function getDentista(){
     try {
-      const { data } = await api.get(`/dentista?matricula=${idDentista}`);
+      const { data } = await API.get(`/dentista?matricula=${idDentista}`);
       setDentista({nome: data.nome, sobrenome: data.sobrenome, matricula: data.matricula, usuario: data.usuario.username})
     } catch (error) {
       console.log("Erro ao obter dentista:");
