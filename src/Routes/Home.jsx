@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "../Components/Card";
 
-import api from "../services/api";
+import { API } from "../Api/api";
 
 const Home = () => {
   const [dentista, setDentista] = useState([]);
@@ -10,7 +10,7 @@ const Home = () => {
 
   useEffect(() => {
     async function getDentist() {
-      const response = await api.get("/dentista")
+      const response = await API.get("/dentista")
       setDentista(response.data)
     }
 
