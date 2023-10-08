@@ -1,8 +1,19 @@
+import { useState } from "react";
+import { loginService } from "../api/loginService";
 import styles from "./Form.module.css";
 
 const LoginForm = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
   const handleSubmit = (e) => {
-    //Nesse handlesubmit você deverá usar o preventDefault,
+    e.preventDefault();
+    console.log(username)
+    console.log(password)
+    console.log(loginService(username, password))
+
+    
+
     //enviar os dados do formulário e enviá-los no corpo da requisição 
     //para a rota da api que faz o login /auth
     //lembre-se que essa rota vai retornar um Bearer Token e o mesmo deve ser salvo
@@ -22,18 +33,21 @@ const LoginForm = () => {
           <form onSubmit={handleSubmit}>
             <input
               className={`form-control ${styles.inputSpacing}`}
-              placeholder="Login"
-              name="login"
-              required
+              type="text"
+              placeholder="username"
+              name="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
             <input
               className={`form-control ${styles.inputSpacing}`}
+              type="password"
               placeholder="Password"
               name="password"
-              type="password"
-              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
-            <button className="btn btn-primary" type="submit">
+            <button className="btn btn-primary" type="submit" disabled={username === "" && password === ""}>
               Send
             </button>
           </form>
