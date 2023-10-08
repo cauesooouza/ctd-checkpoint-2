@@ -2,11 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
-import Home from "./routes/Home";
+import Home from "./Routes/Home";
 import "./index.css";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import DefaultPage from "./routes/DefaultPage";
-import Login from "./routes/Login";
+import DefaultPage from "./Routes/DefaultPage";
+import Login from "./Routes/Login";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 //Lembre-se de configurar suas rotas e seu contexto aqui

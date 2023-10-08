@@ -1,19 +1,20 @@
-import { useState } from "react";
-import { loginService } from "../api/loginService";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { loginService } from "../Api/loginService";
 import styles from "./Form.module.css";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+
+  async function handleSubmit (e) {
     e.preventDefault();
-    console.log(username)
-    console.log(password)
-    console.log(loginService(username, password))
 
+    const token = loginService(username, password);
+    localStorage.setItem('user-token', token);
     
-
     //enviar os dados do formulário e enviá-los no corpo da requisição 
     //para a rota da api que faz o login /auth
     //lembre-se que essa rota vai retornar um Bearer Token e o mesmo deve ser salvo

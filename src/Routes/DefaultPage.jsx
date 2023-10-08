@@ -1,7 +1,7 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../Components/Navbar";
 import { Outlet } from "react-router-dom";
-import Footer from "../components/Footer";
+import Footer from "../Components/Footer";
 
 export default function DefaultPage() {
   return (
