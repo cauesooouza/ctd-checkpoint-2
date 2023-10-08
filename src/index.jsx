@@ -6,6 +6,7 @@ import Home from "./Routes/Home";
 import Detail from "./Routes/Detail";
 import "./index.css";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
+import  App from "./App"
 import DefaultPage from "./Routes/DefaultPage";
 import Login from "./Routes/Login";
 
@@ -16,10 +17,11 @@ root.render(
   <React.StrictMode>
     <BrowserRouter> 
       <Routes>
-        < Route path="/" element={<DefaultPage />}>
+        < Route path="/" element={<App />}>
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dentist/:id" element={<Detail />}/>
+          <Route path="#" element={<DefaultPage />}/>
         </Route>
       </Routes>
     </BrowserRouter>
