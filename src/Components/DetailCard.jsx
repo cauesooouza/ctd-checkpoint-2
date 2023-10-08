@@ -1,15 +1,14 @@
 import { useEffect, useState, useContext } from "react";
 import ScheduleFormModal from "./ScheduleFormModal";
 import styles from "./DetailCard.module.css";
-
-import { DarkModeContext } from "../context/dark-mode";
+//import { DarkModeContext } from "../context/darkMode";
 
 import { API } from './../Api/api';
 
 
 
 const DetailCard = (props) => {
-  const [darkMode] = useContext(DarkModeContext)
+  //const [darkMode] = useContext(DarkModeContext)
   const { idDentista } = props;
   const [dentista, setDentista] = useState({});
 
@@ -29,13 +28,13 @@ const DetailCard = (props) => {
   }, []);
   return (
     <>
-      <h1 className={`${darkMode?"dark":""}`} style={{margin:0}}>Detalhes sobre o dentista {dentista.nome}</h1>
-      <div className={`full-width ${darkMode?"dark":""}`}>
-      <section className={`card col-sm-12 col-lg-6 container ${darkMode?"dark":""}`}>
+      <h1 style={{margin:0}}>Detalhes sobre o dentista {dentista.nome}</h1>
+      <div >
+      <section className={`card col-sm-12 col-lg-6 containe`}>
         {/* //Na linha seguinte deverá ser feito um teste se a aplicação
         // está em dark mode e deverá utilizar o css correto */}
         <div
-          className={`card-body row `}
+          className={`card-body row `}s
         >
           <div className={`col-sm-12 col-lg-6`}>
             <img

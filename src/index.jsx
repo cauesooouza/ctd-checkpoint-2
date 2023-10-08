@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import Home from "./Routes/Home";
+import Detail from "./Routes/Detail";
 import "./index.css";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import DefaultPage from "./Routes/DefaultPage";
@@ -17,6 +18,7 @@ root.render(
         <Route path="/" element={<DefaultPage />}>
           <Route index element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/dentist/:id" element={<Detail />}/>
         </Route>
       </Routes>
     </BrowserRouter>
