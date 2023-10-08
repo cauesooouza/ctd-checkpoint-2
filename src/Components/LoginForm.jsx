@@ -11,10 +11,10 @@ const LoginForm = () => {
 
   async function handleSubmit (e) {
     e.preventDefault();
-
     const token = loginService(username, password);
+    console.log(token)
     localStorage.setItem('user-token', token);
-    
+    navigate("/")
     //enviar os dados do formulário e enviá-los no corpo da requisição 
     //para a rota da api que faz o login /auth
     //lembre-se que essa rota vai retornar um Bearer Token e o mesmo deve ser salvo
