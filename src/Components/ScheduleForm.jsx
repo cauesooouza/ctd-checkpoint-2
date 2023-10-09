@@ -11,6 +11,7 @@ const ScheduleForm = () => {
   const [campoHorario, setCampoHorario] = useState('');
   const navigate = useNavigate();
   const dentistaId = useParams();
+  const token = localStorage.getItem("user-token");
 
   const getDentistas = async () => {
     const { data } = await API.get(`/dentista?matricula=${dentistaId.id}`);
@@ -29,37 +30,6 @@ const ScheduleForm = () => {
     //e pacientes e carregar os dados em 2 estados diferentes
   }, []);
   
-  // {
-  //   "paciente": {
-  //     "nome": "string",
-  //     "sobrenome": "string",
-  //     "matricula": "string",
-  //     "usuario": {
-  //       "username": "string"
-  //     },
-  //     "endereco": {
-  //       "id": 0,
-  //       "logradouro": "string",
-  //       "numero": "string",
-  //       "complemento": "string",
-  //       "bairro": "string",
-  //       "municipio": "string",
-  //       "estado": "AC",
-  //       "cep": "string",
-  //       "pais": "string"
-  //     },
-  //     "dataDeCadastro": "2023-10-09T00:34:22.030Z"
-  //   },
-  //   "dentista": {
-  //     "nome": "string",
-  //     "sobrenome": "string",
-  //     "matric":ula": "string",
-  //     "usuario": {
-  //       "username "string"
-  //     }
-  //   },
-  //   "dataHoraAgendamento": "2023-10-09T00:34:22.030Z"
-  // }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -96,11 +66,12 @@ const ScheduleForm = () => {
     };
     
 
-    console.log(dadosConsulta)
+    
 
     try {
-      await API.post("/consulta", dadosConsulta);
+      await APIPOST.post("/consulta", dadosConsulta, { headers: {Authorization: `Bearer ${token}`}});
       // alert("Consulta agendada");
+      console.log(token)
       navigate("/home");
     } catch (error) {
       // alert("Erro ao agendar consulta!");
@@ -125,7 +96,6 @@ const ScheduleForm = () => {
                 Dentist
               </label>
               <select className="form-select" name="dentist" id="dentist">
-               
                 <option
                   key={"dentista selecionado"}
                   value={`${dentistas.nome} ${dentistas.sobrenome}`}
