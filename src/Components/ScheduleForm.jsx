@@ -64,41 +64,42 @@ const ScheduleForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const dadosConsulta = {
-      paciente: {
-        nome: pacientes.nome,
-        sobrenome: pacientes.sobrenome,
-        matricula: pacientes.matricula,
-        usuario: {
-          username: pacientes.username,
+      "paciente": {
+        "nome": "string",
+        "sobrenome": "string",
+        "matricula": "string",
+        "usuario": {
+          "username": "string"
         },
-        endereco: {
-          id: 0, 
-          logradouro: pacientes.logradouro,
-          numero: pacientes.numero,
-          complemento: pacientes.complemento,
-          bairro: pacientes.bairro,
-          municipio: pacientes.municipio,
-          estado: pacientes.estado,
-          cep: pacientes.cep,
-          pais: pacientes.pais,
+        "endereco": {
+          "id": 0,
+          "logradouro": "string",
+          "numero": "string",
+          "complemento": "string",
+          "bairro": "string",
+          "municipio": "string",
+          "estado": "AC",
+          "cep": "string",
+          "pais": "string"
         },
-        dataDeCadastro: pacientes.dataDeCadastro,
+        "dataDeCadastro": "2023-10-09T02:28:40.898Z"
       },
-      dentista: {
-        nome: dentistas.nome,
-        sobrenome: dentistas.sobrenome,
-        matricula: dentistas.matricula,
-        usuario: {
-          username: dentistas.usuario.username,
-        },
+      "dentista": {
+        "nome": "string",
+        "sobrenome": "string",
+        "matricula": "string",
+        "usuario": {
+          "username": "string"
+        }
       },
-      dataHoraAgendamento: campoHorario,
+      "dataHoraAgendamento": "2023-10-09T02:28:40.898Z"
     };
+    
 
     console.log(dadosConsulta)
 
     try {
-      await APIPOST.post("/consulta", dadosConsulta);
+      await API.post("/consulta", dadosConsulta);
       // alert("Consulta agendada");
       navigate("/home");
     } catch (error) {
