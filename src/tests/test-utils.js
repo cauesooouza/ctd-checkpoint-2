@@ -1,24 +1,26 @@
 import { render } from "@testing-library/react"
 import { BrowserRouter, MemoryRouter, Routes, Route } from "react-router-dom"
-import { ContextProvider } from "../Components/utils/global.context"
+import { AuthProvider } from "../content/auth-context"
+import { DarkModeProvider } from "../content/dark-mode"
 import Home from "../Routes/Home"
 import Detail from "../Routes/Detail"
 import Login from "../Routes/Login"
 import App from "../App"
 
 
+ 
 const renderWithContext = (ui, providerValue)=>{
     return render(
-        <BrowserRouter>
-            <ContextProvider value={providerValue || {theme: "light", data: []}} >   
+        <BrowserRouter>            
+            <DarkModeProvider value={providerValue}>
                 {ui}
-            </ContextProvider>
+            </DarkModeProvider>
         </BrowserRouter>
     )
 }
 
 //Only for testing individual routes as /dentist/:id
-export const renderWithRouter = (ui, {route = '/', path='/'}) => {
+const renderWithRouter = (ui, {route = '/', path='/'}) => {
     window.history.pushState({}, 'Test page', route)
 
     return render(

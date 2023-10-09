@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "../Components/Card.jsx";
 
-import { API } from "../Api/api";
+import { API } from "../Api/api.js";
 
 const Home = () => {
   const [dentista, setDentista] = useState([]);
@@ -26,24 +26,23 @@ const Home = () => {
     getDentist();
   }, []);
 
+  const cleanArray = dentista.filter( dentista => dentista.nome !== "Admin");
+  
   return (
     <>
       <h1>Home</h1>
       <div className="card-grid container">
 
         {
-          dentista.map((dentista) =>
+          cleanArray.map((dentista, id) => 
             <Card
-              key={dentista}
+              key={id}
               matricula={dentista.matricula}
               nome={dentista.nome}
               sobrenome={dentista.sobrenome}
-
             />
           )
         }
-
-
       </div>
     </>
   );

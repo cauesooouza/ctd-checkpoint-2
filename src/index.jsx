@@ -1,29 +1,38 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
+import "./index.css";
+
+import AuthProvider from "./context/useAuthentication";
+import { DarkModeProvider } from "./context/darkMode";
+import App from "./App";
 import Home from "./Routes/Home";
 import Detail from "./Routes/Detail";
-import "./index.css";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
-import  App from "./App"
-import DefaultPage from "./Routes/DefaultPage";
 import Login from "./Routes/Login";
-
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 //Lembre-se de configurar suas rotas e seu contexto aqui
 root.render(
-  <React.StrictMode>
-    <BrowserRouter> 
+  <BrowserRouter>
+    <AuthProvider>
       <Routes>
-        < Route path="/" element={<App />}>
+        <Route
+          Route
+          path="/"
+          element={
+            <DarkModeProvider>
+              <App />
+            </DarkModeProvider>
+          }
+        >
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/dentist/:id" element={<Detail />}/>
-          <Route path="#" element={<DefaultPage />}/>
+          <Route path="/dentist/:id" element={<Detail />} />
         </Route>
       </Routes>
-    </BrowserRouter>
-  </React.StrictMode>
+    </AuthProvider>
+  </BrowserRouter>
 );

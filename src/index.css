@@ -80,16 +80,13 @@ tr:nth-child(even) {
 }
 
 .dark{
-  background-color: #12121296;
+  background-color: #333;
   color: white;
 }
 .dark > a {
   color: white;
 }
 
-.dark h5{
-  color: white;
-}
 
 @media(min-width: 786px) and (max-width: 1065px){
   .card-grid{

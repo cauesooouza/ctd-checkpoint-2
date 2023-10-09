@@ -1,15 +1,16 @@
-
 import { Outlet } from "react-router-dom";
 import Footer from "./Components/Footer";
 import Navbar from "./Components/Navbar";
+import { useContext} from "react";
+import { themeContext } from "./context/darkMode";
 
 function App() {
+  const { theme, handleTheme } = useContext(themeContext);
+
   return (
     <>
-      {/* //Na linha seguinte deverá ser feito um teste se a aplicação
-        // está em dark mode e deverá utilizar a classe dark ou light */}
-      <div className={`app light}`}>
-        <Navbar />
+      <div className={`app ${theme}`}>
+        <Navbar setTheme={handleTheme} />
         <main>
           <Outlet />
         </main>

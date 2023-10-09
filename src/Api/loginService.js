@@ -8,8 +8,7 @@ export async function loginService(username, password) {
     });
     
     return response.data.token;
-  } catch (error) {
+  }catch (error) {
     console.error(error);
   }
 }
-

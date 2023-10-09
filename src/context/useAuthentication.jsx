@@ -1,4 +1,39 @@
+import { createContext, useEffect, useState } from "react";
 
+export const AuthContext = createContext({});
+
+const AuthProvider = ({ children }) => {
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    const response = localStorage.getItem("username");
+    setUsername(response);
+  }, []);
+
+  function saveUsername(username) {
+    setUsername(username);
+    localStorage.setItem("user_name", username);
+  }
+
+  function saveToken(token) {
+    localStorage.setItem("token", token);
+  }
+
+  function removeUserStorage() {
+    
+    localStorage.removeItem("token");
+  }
+
+  return (
+    <AuthContext.Provider
+      value={{ username, saveUsername, removeUserStorage, saveToken }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+export default AuthProvider;
 
 
 
