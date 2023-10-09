@@ -1,6 +1,9 @@
-# ctd-fe3-template
 
 Exame Final de Frontend III
+
+## Integrantes
+
+Caue Souza, José Ricardo Braga, Luan Augusto, Juliana Rodrigues e Douglas Queiroz.
 
 ## Índice
 * [Requisitos](#requisitos)
